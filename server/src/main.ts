@@ -8,8 +8,11 @@ import {
   disconnectFromDatabase,
   connectToDatabase,
 } from './utils/database';
-import userRoute from './modules/user/user.route';
 import { CORS_ORIGIN } from './constants';
+
+import userRoute from './modules/user/user.route';
+import authRoute from './modules/auth/auth.route';
+import deserializeUser from './middleware/deserializeUser';
 
 const PORT = process.env.PORT || 4000;
 
@@ -24,7 +27,10 @@ app.use(
   })
 );
 app.use(helmet());
+app.use(deserializeUser);
+
 app.use('/api/users', userRoute);
+app.use('/api/auth', authRoute);
 
 const server = app.listen(PORT, async () => {
   await connectToDatabase();
