@@ -24,7 +24,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.1",
     "mongoose-slug-generator": "^1.0.4",
-    "nanoid": "^4.0.1",
+    "nanoid": "3.3.2",
     "pino": "^8.11.0",
     "zod": "^3.21.4",
     "zod-express-middleware": "^1.4.0"
