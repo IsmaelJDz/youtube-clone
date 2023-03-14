@@ -1,7 +1,11 @@
 import Image from 'next/image';
-import { AppShell, Navbar, Header, Box } from '@mantine/core';
+import { AppShell, Navbar, Header, Box, Anchor } from '@mantine/core';
+import { useMe } from '../context/me';
+import Link from 'next/link';
 
 function HomePageLayout({ children }: { children: React.ReactNode }) {
+  const { refetch, user } = useMe();
+
   return (
     <AppShell
       // title="YouTube Clone"
@@ -27,6 +31,19 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
                 height={40}
               />
             </Box>
+
+            {!user && (
+              <>
+                <Link href='/auth/login' passHref>
+                  <Anchor>Login</Anchor>
+                </Link>
+                <Link href='/auth/register' passHref>
+                  <Anchor>Register</Anchor>
+                </Link>
+              </>
+            )}
+
+            {user && <p>Upload a video</p>}
           </Box>
         </Header>
       }>
