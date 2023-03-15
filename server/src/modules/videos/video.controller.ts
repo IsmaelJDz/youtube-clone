@@ -139,7 +139,7 @@ export async function streamVideoHandler(
     'Content-Length': contentLength,
     'Content-Type': `video/${video.extension}`,
     //'Access-Control-Allow-Origin': '*',
-    //'Cross-Origin-Resource-Policy': 'cross-origin',
+    'Cross-Origin-Resource-Policy': 'cross-origin',
   };
 
   res.writeHead(StatusCodes.PARTIAL_CONTENT, headers);
